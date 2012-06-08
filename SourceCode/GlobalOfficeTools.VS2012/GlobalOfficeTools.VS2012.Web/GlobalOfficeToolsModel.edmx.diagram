@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f06ba7f77134fe5b6cc7241c28deaf1" Name="Diagram1">
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.CLItblAcl" Width="1.5" PointX="5.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.CLItblCompany" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.CLItblCompanyUser" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.CLItblFederationDetail" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.CLItblReference" Width="1.5" PointX="7.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.CLItblUser" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.ENTtblAddress" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.ENTtblAddressBook" Width="1.5" PointX="8" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.ENTtblContact" Width="1.5" PointX="2.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.ENTtblEntity" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.ENTtblPerson" Width="1.5" PointX="4.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.SYStblMenu" Width="1.5" PointX="6.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.SYStblNewsMessage" Width="1.5" PointX="8.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalOfficeTools.RIA.SYStblOption" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalOfficeTools.RIA.FK_CLItblFederationDetail_CLItblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalOfficeTools.RIA.FK_ENTtblAddressBook_ENTtblEntity" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

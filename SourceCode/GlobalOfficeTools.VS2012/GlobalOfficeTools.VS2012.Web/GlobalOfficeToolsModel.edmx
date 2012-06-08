@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GlobalOfficeTools.RIA.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="GlobalOfficeToolsRIAStoreContainer">
+          <EntitySet Name="CLItblAcl" EntityType="GlobalOfficeTools.RIA.Store.CLItblAcl" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLItblCompany" EntityType="GlobalOfficeTools.RIA.Store.CLItblCompany" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLItblCompanyUser" EntityType="GlobalOfficeTools.RIA.Store.CLItblCompanyUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLItblFederationDetails" EntityType="GlobalOfficeTools.RIA.Store.CLItblFederationDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLItblReference" EntityType="GlobalOfficeTools.RIA.Store.CLItblReference" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLItblUser" EntityType="GlobalOfficeTools.RIA.Store.CLItblUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTtblAddress" EntityType="GlobalOfficeTools.RIA.Store.ENTtblAddress" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTtblAddressBook" EntityType="GlobalOfficeTools.RIA.Store.ENTtblAddressBook" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTtblContact" EntityType="GlobalOfficeTools.RIA.Store.ENTtblContact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTtblEntity" EntityType="GlobalOfficeTools.RIA.Store.ENTtblEntity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTtblPerson" EntityType="GlobalOfficeTools.RIA.Store.ENTtblPerson" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SYStblMenu" EntityType="GlobalOfficeTools.RIA.Store.SYStblMenu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SYStblNewsMessages" EntityType="GlobalOfficeTools.RIA.Store.SYStblNewsMessages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SYStblOption" EntityType="GlobalOfficeTools.RIA.Store.SYStblOption" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CLItblCompanyUser_CLItblCompany" Association="GlobalOfficeTools.RIA.Store.FK_CLItblCompanyUser_CLItblCompany">
+            <End Role="CLItblCompany" EntitySet="CLItblCompany" />
+            <End Role="CLItblCompanyUser" EntitySet="CLItblCompanyUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLItblCompanyUser_CLItblUser" Association="GlobalOfficeTools.RIA.Store.FK_CLItblCompanyUser_CLItblUser">
+            <End Role="CLItblUser" EntitySet="CLItblUser" />
+            <End Role="CLItblCompanyUser" EntitySet="CLItblCompanyUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLItblFederationDetail_CLItblUser" Association="GlobalOfficeTools.RIA.Store.FK_CLItblFederationDetail_CLItblUser">
+            <End Role="CLItblUser" EntitySet="CLItblUser" />
+            <End Role="CLItblFederationDetails" EntitySet="CLItblFederationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ENTtblAddressBook_ENTtblEntity" Association="GlobalOfficeTools.RIA.Store.FK_ENTtblAddressBook_ENTtblEntity">
+            <End Role="ENTtblEntity" EntitySet="ENTtblEntity" />
+            <End Role="ENTtblAddressBook" EntitySet="ENTtblAddressBook" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CLItblAcl">
+          <Key>
+            <PropertyRef Name="AclId" />
+          </Key>
+          <Property Name="AclId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Entity" Type="varchar" MaxLength="50" />
+          <Property Name="EntityId" Type="int" />
+          <Property Name="Resource" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ResourceId" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLItblCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CLItblCompanyUser">
+          <Key>
+            <PropertyRef Name="CompanyUserId" />
+          </Key>
+          <Property Name="CompanyUserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="EmployeeTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLItblFederationDetails">
+          <Key>
+            <PropertyRef Name="FederationDetailId" />
+          </Key>
+          <Property Name="FederationDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FederationType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FederationId" Type="varchar" MaxLength="100" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CLItblReference">
+          <Key>
+            <PropertyRef Name="ReferenceId" />
+          </Key>
+          <Property Name="ReferenceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceTable" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsSystem" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLItblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ENTtblAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AddressLineOne" Type="varchar" MaxLength="1000" />
+          <Property Name="AddressLineTwo" Type="varchar" MaxLength="1000" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="1000" />
+          <Property Name="Country" Type="varchar" MaxLength="1000" />
+          <Property Name="IsBillingAddress" Type="bit" Nullable="false" />
+          <Property Name="IsShippingAddress" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ENTtblAddressBook">
+          <Key>
+            <PropertyRef Name="EntityAddressBookId" />
+          </Key>
+          <Property Name="EntityAddressBookId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EntityId" Type="int" Nullable="false" />
+          <Property Name="Reference" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReferenceId" Type="int" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="HierarchyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ENTtblContact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ENTtblEntity">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="VatNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ENTtblPerson">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Note" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="SYStblMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Text" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="1000" />
+          <Property Name="Action" Type="varchar" MaxLength="255" />
+          <Property Name="ActionObject" Type="varchar" MaxLength="50" />
+          <Property Name="ActionParameters" Type="varchar" MaxLength="255" />
+          <Property Name="ParentMenuId" Type="int" Nullable="false" />
+          <Property Name="MenuOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYStblNewsMessages">
+          <Key>
+            <PropertyRef Name="NewMessageId" />
+          </Key>
+          <Property Name="NewMessageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="MessageDate" Type="date" Nullable="false" />
+          <Property Name="Message" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="Writer" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SYStblOption">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OptionType" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ObjectId" Type="int" Nullable="false" />
+          <Property Name="OptionKey" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="OptionValue" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_CLItblCompanyUser_CLItblCompany">
+          <End Role="CLItblCompany" Type="GlobalOfficeTools.RIA.Store.CLItblCompany" Multiplicity="1" />
+          <End Role="CLItblCompanyUser" Type="GlobalOfficeTools.RIA.Store.CLItblCompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLItblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CLItblCompanyUser">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLItblCompanyUser_CLItblUser">
+          <End Role="CLItblUser" Type="GlobalOfficeTools.RIA.Store.CLItblUser" Multiplicity="1" />
+          <End Role="CLItblCompanyUser" Type="GlobalOfficeTools.RIA.Store.CLItblCompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLItblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CLItblCompanyUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLItblFederationDetail_CLItblUser">
+          <End Role="CLItblUser" Type="GlobalOfficeTools.RIA.Store.CLItblUser" Multiplicity="1" />
+          <End Role="CLItblFederationDetails" Type="GlobalOfficeTools.RIA.Store.CLItblFederationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLItblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CLItblFederationDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ENTtblAddressBook_ENTtblEntity">
+          <End Role="ENTtblEntity" Type="GlobalOfficeTools.RIA.Store.ENTtblEntity" Multiplicity="1" />
+          <End Role="ENTtblAddressBook" Type="GlobalOfficeTools.RIA.Store.ENTtblAddressBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTtblEntity">
+              <PropertyRef Name="EntityId" />
+            </Principal>
+            <Dependent Role="ENTtblAddressBook">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GlobalOfficeTools.RIA" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbGlobalOfficeToolsEntities2" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CLItblAcls" EntityType="GlobalOfficeTools.RIA.CLItblAcl" />
+          <EntitySet Name="CLItblCompanies" EntityType="GlobalOfficeTools.RIA.CLItblCompany" />
+          <EntitySet Name="CLItblCompanyUsers" EntityType="GlobalOfficeTools.RIA.CLItblCompanyUser" />
+          <EntitySet Name="CLItblFederationDetails" EntityType="GlobalOfficeTools.RIA.CLItblFederationDetail" />
+          <EntitySet Name="CLItblReferences" EntityType="GlobalOfficeTools.RIA.CLItblReference" />
+          <EntitySet Name="CLItblUsers" EntityType="GlobalOfficeTools.RIA.CLItblUser" />
+          <EntitySet Name="ENTtblAddresses" EntityType="GlobalOfficeTools.RIA.ENTtblAddress" />
+          <EntitySet Name="ENTtblAddressBooks" EntityType="GlobalOfficeTools.RIA.ENTtblAddressBook" />
+          <EntitySet Name="ENTtblContacts" EntityType="GlobalOfficeTools.RIA.ENTtblContact" />
+          <EntitySet Name="ENTtblEntities" EntityType="GlobalOfficeTools.RIA.ENTtblEntity" />
+          <EntitySet Name="ENTtblPersons" EntityType="GlobalOfficeTools.RIA.ENTtblPerson" />
+          <EntitySet Name="SYStblMenus" EntityType="GlobalOfficeTools.RIA.SYStblMenu" />
+          <EntitySet Name="SYStblNewsMessages" EntityType="GlobalOfficeTools.RIA.SYStblNewsMessage" />
+          <EntitySet Name="SYStblOptions" EntityType="GlobalOfficeTools.RIA.SYStblOption" />
+          <AssociationSet Name="FK_CLItblCompanyUser_CLItblCompany" Association="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblCompany">
+            <End Role="CLItblCompany" EntitySet="CLItblCompanies" />
+            <End Role="CLItblCompanyUser" EntitySet="CLItblCompanyUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLItblCompanyUser_CLItblUser" Association="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblUser">
+            <End Role="CLItblUser" EntitySet="CLItblUsers" />
+            <End Role="CLItblCompanyUser" EntitySet="CLItblCompanyUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLItblFederationDetail_CLItblUser" Association="GlobalOfficeTools.RIA.FK_CLItblFederationDetail_CLItblUser">
+            <End Role="CLItblUser" EntitySet="CLItblUsers" />
+            <End Role="CLItblFederationDetails" EntitySet="CLItblFederationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ENTtblAddressBook_ENTtblEntity" Association="GlobalOfficeTools.RIA.FK_ENTtblAddressBook_ENTtblEntity">
+            <End Role="ENTtblEntity" EntitySet="ENTtblEntities" />
+            <End Role="ENTtblAddressBook" EntitySet="ENTtblAddressBooks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CLItblAcl">
+          <Key>
+            <PropertyRef Name="AclId" />
+          </Key>
+          <Property Name="AclId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Entity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EntityId" Type="Int32" />
+          <Property Name="Resource" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ResourceId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLItblCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CLItblCompanyUsers" Relationship="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblCompany" FromRole="CLItblCompany" ToRole="CLItblCompanyUser" />
+        </EntityType>
+        <EntityType Name="CLItblCompanyUser">
+          <Key>
+            <PropertyRef Name="CompanyUserId" />
+          </Key>
+          <Property Name="CompanyUserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLItblCompany" Relationship="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblCompany" FromRole="CLItblCompanyUser" ToRole="CLItblCompany" />
+          <NavigationProperty Name="CLItblUser" Relationship="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblUser" FromRole="CLItblCompanyUser" ToRole="CLItblUser" />
+        </EntityType>
+        <EntityType Name="CLItblFederationDetail">
+          <Key>
+            <PropertyRef Name="FederationDetailId" />
+          </Key>
+          <Property Name="FederationDetailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FederationType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FederationId" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CLItblUser" Relationship="GlobalOfficeTools.RIA.FK_CLItblFederationDetail_CLItblUser" FromRole="CLItblFederationDetails" ToRole="CLItblUser" />
+        </EntityType>
+        <EntityType Name="CLItblReference">
+          <Key>
+            <PropertyRef Name="ReferenceId" />
+          </Key>
+          <Property Name="ReferenceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceTable" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLItblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CLItblCompanyUsers" Relationship="GlobalOfficeTools.RIA.FK_CLItblCompanyUser_CLItblUser" FromRole="CLItblUser" ToRole="CLItblCompanyUser" />
+          <NavigationProperty Name="CLItblFederationDetails" Relationship="GlobalOfficeTools.RIA.FK_CLItblFederationDetail_CLItblUser" FromRole="CLItblUser" ToRole="CLItblFederationDetails" />
+        </EntityType>
+        <EntityType Name="ENTtblAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressLineOne" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="AddressLineTwo" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="IsBillingAddress" Type="Boolean" Nullable="false" />
+          <Property Name="IsShippingAddress" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ENTtblAddressBook">
+          <Key>
+            <PropertyRef Name="EntityAddressBookId" />
+          </Key>
+          <Property Name="EntityAddressBookId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="EntityId" Type="Int32" Nullable="false" />
+          <Property Name="Reference" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ReferenceId" Type="Int32" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="HierarchyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ENTtblEntity" Relationship="GlobalOfficeTools.RIA.FK_ENTtblAddressBook_ENTtblEntity" FromRole="ENTtblAddressBook" ToRole="ENTtblEntity" />
+        </EntityType>
+        <EntityType Name="ENTtblContact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ENTtblEntity">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VatNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ENTtblAddressBooks" Relationship="GlobalOfficeTools.RIA.FK_ENTtblAddressBook_ENTtblEntity" FromRole="ENTtblEntity" ToRole="ENTtblAddressBook" />
+        </EntityType>
+        <EntityType Name="ENTtblPerson">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Note" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SYStblMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Image" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Action" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ActionObject" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ActionParameters" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ParentMenuId" Type="Int32" Nullable="false" />
+          <Property Name="MenuOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYStblNewsMessage">
+          <Key>
+            <PropertyRef Name="NewMessageId" />
+          </Key>
+          <Property Name="NewMessageId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="MessageDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Writer" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SYStblOption">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionType" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="OptionKey" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="OptionValue" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_CLItblCompanyUser_CLItblCompany">
+          <End Role="CLItblCompany" Type="GlobalOfficeTools.RIA.CLItblCompany" Multiplicity="1" />
+          <End Role="CLItblCompanyUser" Type="GlobalOfficeTools.RIA.CLItblCompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLItblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CLItblCompanyUser">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLItblCompanyUser_CLItblUser">
+          <End Role="CLItblUser" Type="GlobalOfficeTools.RIA.CLItblUser" Multiplicity="1" />
+          <End Role="CLItblCompanyUser" Type="GlobalOfficeTools.RIA.CLItblCompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLItblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CLItblCompanyUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLItblFederationDetail_CLItblUser">
+          <End Role="CLItblUser" Type="GlobalOfficeTools.RIA.CLItblUser" Multiplicity="1" />
+          <End Role="CLItblFederationDetails" Type="GlobalOfficeTools.RIA.CLItblFederationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLItblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CLItblFederationDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ENTtblAddressBook_ENTtblEntity">
+          <End Role="ENTtblEntity" Type="GlobalOfficeTools.RIA.ENTtblEntity" Multiplicity="1" />
+          <End Role="ENTtblAddressBook" Type="GlobalOfficeTools.RIA.ENTtblAddressBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTtblEntity">
+              <PropertyRef Name="EntityId" />
+            </Principal>
+            <Dependent Role="ENTtblAddressBook">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GlobalOfficeToolsRIAStoreContainer" CdmEntityContainer="dbGlobalOfficeToolsEntities2">
+          <EntitySetMapping Name="CLItblAcls">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.CLItblAcl">
+              <MappingFragment StoreEntitySet="CLItblAcl">
+                <ScalarProperty Name="AclId" ColumnName="AclId" />
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="Resource" ColumnName="Resource" />
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLItblCompanies">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.CLItblCompany">
+              <MappingFragment StoreEntitySet="CLItblCompany">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLItblCompanyUsers">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.CLItblCompanyUser">
+              <MappingFragment StoreEntitySet="CLItblCompanyUser">
+                <ScalarProperty Name="CompanyUserId" ColumnName="CompanyUserId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmployeeTypeId" ColumnName="EmployeeTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLItblFederationDetails">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.CLItblFederationDetail">
+              <MappingFragment StoreEntitySet="CLItblFederationDetails">
+                <ScalarProperty Name="FederationDetailId" ColumnName="FederationDetailId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FederationType" ColumnName="FederationType" />
+                <ScalarProperty Name="FederationId" ColumnName="FederationId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLItblReferences">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.CLItblReference">
+              <MappingFragment StoreEntitySet="CLItblReference">
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="ReferenceTable" ColumnName="ReferenceTable" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLItblUsers">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.CLItblUser">
+              <MappingFragment StoreEntitySet="CLItblUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTtblAddresses">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.ENTtblAddress">
+              <MappingFragment StoreEntitySet="ENTtblAddress">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="AddressLineOne" ColumnName="AddressLineOne" />
+                <ScalarProperty Name="AddressLineTwo" ColumnName="AddressLineTwo" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IsBillingAddress" ColumnName="IsBillingAddress" />
+                <ScalarProperty Name="IsShippingAddress" ColumnName="IsShippingAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTtblAddressBooks">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.ENTtblAddressBook">
+              <MappingFragment StoreEntitySet="ENTtblAddressBook">
+                <ScalarProperty Name="EntityAddressBookId" ColumnName="EntityAddressBookId" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="HierarchyId" ColumnName="HierarchyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTtblContacts">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.ENTtblContact">
+              <MappingFragment StoreEntitySet="ENTtblContact">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTtblEntities">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.ENTtblEntity">
+              <MappingFragment StoreEntitySet="ENTtblEntity">
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTtblPersons">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.ENTtblPerson">
+              <MappingFragment StoreEntitySet="ENTtblPerson">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYStblMenus">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.SYStblMenu">
+              <MappingFragment StoreEntitySet="SYStblMenu">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ActionObject" ColumnName="ActionObject" />
+                <ScalarProperty Name="ActionParameters" ColumnName="ActionParameters" />
+                <ScalarProperty Name="ParentMenuId" ColumnName="ParentMenuId" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYStblNewsMessages">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.SYStblNewsMessage">
+              <MappingFragment StoreEntitySet="SYStblNewsMessages">
+                <ScalarProperty Name="NewMessageId" ColumnName="NewMessageId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Writer" ColumnName="Writer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYStblOptions">
+            <EntityTypeMapping TypeName="GlobalOfficeTools.RIA.SYStblOption">
+              <MappingFragment StoreEntitySet="SYStblOption">
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="OptionKey" ColumnName="OptionKey" />
+                <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

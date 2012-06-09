@@ -86,6 +86,13 @@
       <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="system.windows.controls.toolkit">
+      <HintPath>..\..\..\..\..\..\..\..\program files (x86)\microsoft sdks\silverlight\v4.0\toolkit\apr10\bin\system.windows.controls.toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit.Internals">
+      <HintPath>..\..\..\..\..\..\..\..\program files (x86)\microsoft sdks\silverlight\v4.0\toolkit\apr10\bin\System.Windows.Controls.Toolkit.Internals.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files (x86)\Microsoft SDKs\Expression\Blend\Silverlight\v5.0\Libraries\System.Windows.Interactivity.dll</HintPath>

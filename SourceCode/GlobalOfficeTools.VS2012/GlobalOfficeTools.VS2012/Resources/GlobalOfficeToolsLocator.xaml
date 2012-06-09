@@ -4,4 +4,5 @@
     xmlns:vm="clr-namespace:IMAGO.MvvmLocator;assembly=IMAGO.MvvmLocator">
 
     <vm:Locator x:Key="locator" />
+    
 </ResourceDictionary>

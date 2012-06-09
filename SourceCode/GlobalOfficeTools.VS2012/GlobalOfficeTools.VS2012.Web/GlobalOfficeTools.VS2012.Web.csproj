@@ -122,6 +122,12 @@
   <ItemGroup>
     <Content Include="ClientBin\System.ComponentModel.Composition.Initialization.zip" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientBin\System.Windows.Controls.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientBin\System.Windows.Controls.Toolkit.zip" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

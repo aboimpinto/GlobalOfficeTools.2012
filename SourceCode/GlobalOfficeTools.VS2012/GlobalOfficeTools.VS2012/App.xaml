@@ -6,6 +6,7 @@
     <Application.Resources>        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="Resources/GlobalOfficeToolsBrushes.xaml"/>-->
                 <ResourceDictionary Source="Resources/GlobalOfficeToolsStyles.xaml" />
                 <ResourceDictionary Source="Resources/GlobalOfficeToolsConverters.xaml" />
                 <ResourceDictionary Source="Resources/GlobalOfficeToolsLocator.xaml" />

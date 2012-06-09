@@ -5,6 +5,5 @@
 
     <!--- Converters -->
     <converters:Boolean2Visibility x:Key="boolean2Visibility" />
-    <!--<converters:DebugConverter x:Key="debugConverter" />-->
     
 </ResourceDictionary>
